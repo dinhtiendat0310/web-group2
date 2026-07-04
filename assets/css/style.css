@@ -1,3 +1,24 @@
+/* button */
+button {
+    border: none;
+    color: #fff;
+    background-image: linear-gradient(to right, var(--color-text), var(--color-one), #00ADEF, var(--color-text), var(--color-one));
+    font-size: 0px 20px;
+    padding: 20px;
+    border-radius: 16px;
+    background-size: 300% 100%;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    background-position: 100% 0;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* end button */
+
 /* section 1 */
 
 .section-1 .inner-wrap {
@@ -30,17 +51,20 @@
     font-weight: 300;
 }
 
-.section-1 .inner-wrap li:first-child:hover {
-    color: var(--color-text);  
-}
-.section-1 .inner-wrap li:first-child a {
-    color: inherit;
-    font-size: inherit;
-}
 .section-1 .inner-wrap li:last-child {
     transition: all 0.3s ease;
     animation: border-pulse 2s ease-in-out infinite;
 }
+
+.section-1 .inner-wrap li:first-child:hover {
+    color: var(--color-text);  
+}
+
+.section-1 .inner-wrap li:first-child a {
+    color: inherit;
+    font-size: inherit;
+}
+
 
 .section-1 .inner-wrap li:last-child a {
     color: var(--color-text);   
@@ -98,24 +122,28 @@
     text-align: center;
 }
 
+.section-2 .order-timeline .inner-wrap .list-item .timeline-wrapper{
+    position: relative;
+    margin-bottom: 23px;
+}
+
 .section-2 .order-timeline .inner-wrap .list-item .timeline-icon {
     border-radius: 50px;
     background-color: var(--color-one);
     padding: 20px;
     display: inline-block;
-    position: relative;
-    margin-bottom: 23px;
+    
 }
 
 .section-2 .order-timeline .inner-wrap .list-item .timeline-icon.active,
-.section-2 .order-timeline .inner-wrap .list-item:first-child .timeline-icon .item-active  {
+.section-2 .order-timeline .inner-wrap .list-item:first-child .item-active  {
     background-color: var(--color-two);
     border-color: var(--color-text);
     color: white;
     box-shadow: 0 8px 30px rgba(234, 179, 8, 0.35);
 }
 
-.section-2 .order-timeline .inner-wrap .list-item .timeline-icon .item-active {
+.section-2 .order-timeline .inner-wrap .list-item .item-active {
     position: absolute;
     left: 50%;
     bottom: -20px;
@@ -157,7 +185,12 @@
 }
 
 .section-3 .user-card-header .user-cart {
-    font-size: 20px;
+    padding: 11px 16px;
+    font-size: 22px;
+}
+
+.section-3 .user-card-header .user-cart i {
+    color: var(--color-two);
 }
 
 .section-3 .user-card-header .user-cart .inner-desc {
@@ -185,6 +218,23 @@
     gap: 20px;
 }
 
+.section-3 .user-card-body .column-feature {
+    color: var(--color-background);
+    margin-bottom: 15px;
+}
+
+.section-3 .user-card-body .column-products .grid-products {
+    border-bottom: 1px solid var(--color-background);
+    padding: 7px 0;
+}
+
+.section-3 .user-card-body .column-products .grid-products:last-child {
+    border-style: none;
+}
+
+.section-3 .user-card-body .col-del {
+    color: var(--color-background);
+}
 
 .section-3 .user-card-body .column-products .col-product {
     display: flex;
@@ -193,23 +243,26 @@
     gap: 10px;
 } 
 
-.section-3 .user-card-body .column-products .col-product {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-} 
-
 .section-3 .user-card-body .column-products .col-product img {
     aspect-ratio: 4 / 3;
     width: 50px;
     height: auto;
-    
+    object-fit: cover;
+}
+
+.section-3 .user-card-body .column-products .col-total,
+.section-3 .user-card-body .column-total-price div span{
+    color: #e53e3e;
 }
 
 .section-3 .user-card-body .column-total-price div {
     text-align: end;
     padding: 11px 16px;
     font-size: 20px;
+}
+
+.section-3 .button {
+    margin-left: 90%;
 }
 
 /* end section 3 */
@@ -337,6 +390,10 @@
     padding: 0 22px;
 }
 
+.section-4 .grid-row .col-left .personal-detail .card-body {
+    position: relative;
+}
+
 .section-4 .grid-row .col-left .personal-detail .card-body .form-group {
     margin-bottom: 16px;
 }
@@ -438,27 +495,9 @@
     margin-top: 2px;
 }
 
-
-/* button */
 .section-4 .grid-row .col-left .personal-detail .card-body button {
-    border: none;
-    color: #fff;
-    background-image: linear-gradient(to right, var(--color-text), var(--color-one), #00ADEF, var(--color-text), var(--color-one));
-    font-size: 20px;
-    padding: 20px;
-    border-radius: 16px;
     margin-left: 50%;
-    background-size: 300% 100%;
-    cursor: pointer;
-    transition: all 0.5s ease;
 }
-
-.section-4 .grid-row .col-left .personal-detail .card-body button:hover {
-    background-position: 100% 0;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-/* end button */
 
 
 /* end section 4 */
