@@ -57,14 +57,13 @@
 }
 
 .section-1 .inner-wrap li:first-child:hover {
-    color: var(--color-text);  
+    color: var(--color-two);  
 }
 
 .section-1 .inner-wrap li:first-child a {
     color: inherit;
     font-size: inherit;
 }
-
 
 .section-1 .inner-wrap li:last-child a {
     color: var(--color-text);   
@@ -94,64 +93,74 @@
 .section-2 {
     margin: 25px 0;
     position: sticky;
-    top: 81px;
+    top: 80px;
     z-index: 2;
 }
 
 .section-2 .container {
     background-color: #bae0ff;
     border-radius: 16px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .section-2 .order-timeline {
     position: relative;
 }
 
-.section-2 .order-timeline .timeline-bar {
+.section-2 .timeline-bar {
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 5%;
     right: 5%;
     background-color: #E5E7EB;
     height: 3px;
     padding: 0 30px;
     border-radius: 15px;
+    transition: all 3s ease-in-out;
+
+    background: linear-gradient(to right, var(--color-two), var(--color-two)) no-repeat;
+    background-color: #E5E7EB;
 }
 
-.section-2 .order-timeline .inner-wrap {
+.timeline-bar.step-0 { background-size: 0% 100%; }
+.timeline-bar.step-1 { background-size: 25% 100%; }
+.timeline-bar.step-2 { background-size: 50% 100%; }
+.timeline-bar.step-3 { background-size: 100% 100%; }
+
+
+.section-2 .inner-wrap {
     display: flex;
     justify-content: space-around;
     position: relative;
     z-index: 1;
 }
 
-.section-2 .order-timeline .inner-wrap .list-item {
+.section-2 .list-item {
     text-align: center;
 }
 
-.section-2 .order-timeline .inner-wrap .list-item .timeline-wrapper{
+.section-2 .list-item .timeline-wrapper{
     position: relative;
     margin-bottom: 23px;
 }
 
-.section-2 .order-timeline .inner-wrap .list-item .timeline-icon {
+.section-2 .list-item .timeline-icon {
     border-radius: 50px;
     background-color: var(--color-one);
     padding: 20px;
     display: inline-block;
-    
+    cursor: pointer;
 }
 
-.section-2 .order-timeline .inner-wrap .list-item .timeline-icon.active,
-.section-2 .order-timeline .inner-wrap .list-item:first-child .item-active  {
+.section-2 .list-item .timeline-icon.active,
+.section-2 .list-item .item-active.active  {
     background-color: var(--color-two);
     border-color: var(--color-text);
     color: white;
     box-shadow: 0 8px 30px rgba(234, 179, 8, 0.35);
 }
 
-.section-2 .order-timeline .inner-wrap .list-item .item-active {
+.section-2 .list-item .item-active {
     position: absolute;
     left: 50%;
     bottom: -20px;
@@ -163,22 +172,12 @@
     display: inline-block;
 } 
 
-.section-2 .order-timeline .inner-wrap .list-item:first-child .timeline-icon {
-    background-color: var(--color-two);
-}
-
-.section-2 .order-timeline .inner-wrap .list-item .timeline-title {
+.section-2 .list-item .timeline-title {
     font-size: 20px;
     font-weight: 500;
 }
 
-.section-2 .order-timeline .inner-wrap .list-item .timeline-desc, 
-.section-2 .order-timeline .inner-wrap .list-item .timeline-status {
-    margin: 2px 0;
-    color: #6b7280;
-}
-
-.section-2 .order-timeline .inner-wrap .list-item:hover .timeline-icon {
+.section-2 .list-item:hover .timeline-icon {
     transform: scale(1.1);
     transition: 0.3s;
 }
@@ -302,7 +301,7 @@
 }
 
 .section-3 .button-1 {
-    margin-left: 90%;
+    margin-left: 80%;
 }
 
 /* end section 3 */
@@ -564,6 +563,10 @@
 
 
 /* section 5 */
+.section-5 {
+    margin-bottom: 50px;
+}
+
 .section-5.hidden {
     display: none;
 }
@@ -654,9 +657,31 @@
   
 }
 
+.section-5 .payment .payment-body .card-default {
+    padding: 100px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.section-5 .payment .payment-body .card-default.show {
+    display: block;
+}
+
+.section-5 .payment .payment-body .card-default.hidden {
+    display: none;
+}
+
 .section-5 .payment .payment-body .credit-infor {
   margin: 50px 25px;
-  
+}
+
+.section-5 .payment .payment-body .credit-infor.hidden {
+    display: none;
+}
+
+.section-5 .payment .payment-body .credit-infor.show {
+    display: block;
 }
 
 .section-5 .payment .payment-body .credit-infor .grid-card-infor {
@@ -671,20 +696,11 @@
   padding: 11px 16px;
 }
 
+
 .section-5 .payment .payment-body .credit-infor .grid-card-infor .grid-card-left {
   font-size: 20px;
   color: #6b7280;
 }
-
-.section-5 .payment .payment-body .credit-infor .grid-card-infor .grid-card-left.hidden {
-    display: none;
-}
-
-.section-5 .payment .payment-body .credit-infor .grid-card-infor .grid-card-left.active {
-    display: block;
-}
-
-
 
 .section-5 .payment .payment-body .credit-infor .grid-card-infor .grid-card-right {
   font-size: 24px;

@@ -2,6 +2,66 @@ import {
   fetchApi
 } from "./fetchApi.js";
 
+function setupTimelineScroll() {
+  const icons = document.querySelectorAll('.timeline-icon');
+  const sections = ['.section-3', '.section-4', '.section-5', '.section-6'];
+  const headerHeight = 205; 
+  icons.forEach((icon, index) => {
+    icon.addEventListener('click', function() {
+      if (this.classList.contains('active')) {
+        const section = document.querySelector(sections[index]);
+        if (section) {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: sectionTop - headerHeight, // Trừ đi chiều cao header
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+}
+
+function updateTimeLine(step) {
+  const timeline_bar = document.querySelector(".timeline-bar");
+  timeline_bar.classList.remove('step-0','step-1', 'step-2', 'step-3', 'step-4');
+  timeline_bar.classList.add(`step-${step}`);
+
+
+  const icons = document.querySelectorAll(".timeline-icon");
+  icons.forEach((icon, index) => {
+    const isActive = (step === 3) ? true : (index < step);
+    if (isActive) {
+      icon.classList.add('active');
+    } else {
+      icon.classList.remove('active');
+    }
+  });
+
+  const item_actives = document.querySelectorAll(".item-active");
+  item_actives.forEach((icon, index) => {
+    const isActive = (step === 3) ? true : (index < step);
+    if (isActive) {
+      icon.classList.add('active');
+    } else {
+      icon.classList.remove('active');
+    }
+  });
+}
+
+
+function runParallax() {
+  document.querySelectorAll(".imgs img").forEach((img, index) => {
+    let startY = img.getBoundingClientRect().top + window.scrollY;
+    const speed = 0.1;
+
+    window.addEventListener("scroll", function () {
+      const scrolled = window.scrollY;
+      img.style.transform = `translateY(${(scrolled - startY) * speed}px)`;
+    });
+  });
+}
+
 function getRemainingProducts() {
   return document.querySelectorAll(".column-products .grid-products");
 }
@@ -170,12 +230,13 @@ function btn_products() {
     if (hasBoxChecked) {
 
       saveSelectedProducts();
-
+      updateTimeLine(1);
       const section_4 = document.querySelector(".section-4");
       if (section_4.classList.contains("hidden")) {
         section_4.classList.remove("hidden");
         section_4.classList.add("show");
       }
+      runParallax();
     } else {
       alert("Vui lòng chọn 1 sản phẩm trước khi xác nhận");
     }
@@ -212,11 +273,25 @@ function selectBank() {
         el.classList.remove("active");
         el.classList.add("hidden");
       });
+      const credit_infor = document.querySelector(".credit-infor");
+      if(credit_infor.classList.contains("hidden")) {
+        credit_infor.classList.remove("hidden");
+        credit_infor.classList.add("show");
+      }
+      const card_default = document.querySelector(".card-default");
+      if(card_default.classList.contains("show")) {
+        card_default.classList.remove("show");
+        card_default.classList.add("hidden");
+      } 
 
-      const card_left = document.querySelector(".grid-card-left");
-      card_left.classList.add("active");
-      const card_right = document.querySelector(`#bankData-${this.id}`);
-      card_right.classList.add("active")
+      const bankId = this.id;
+      const card_right = document.querySelector(`#bankData-${bankId}`);
+      console.log(card_right);
+      if (card_right) {
+        card_right.classList.remove("hidden");
+        card_right.classList.add("active");      
+      } 
+
       const bankName = this.getAttribute('name');
       const btn_credit = document.querySelector(".section-5 .payment-body .button-1");
       btn_credit.onclick = () => {
@@ -231,6 +306,7 @@ function selectBank() {
             section_6.classList.remove("hidden");
             section_6.classList.add("show");
           }
+          updateTimeLine(3);
         }
       }
     });
@@ -402,22 +478,7 @@ btn_UserInfo.addEventListener('click', () => {
     section_5.classList.remove("hidden");
     section_5.classList.add("show");
   }
+  updateTimeLine(2);
 })
 
-
-// document.querySelectorAll(".imgs img").forEach((img, index) => {
-//   let startY = img.getBoundingClientRect().top + window.scrollY;
-//   const speed = 0.1;
-
-//   window.addEventListener("scroll", function () {
-//     const scrolled = window.scrollY;
-//     img.style.transform = `translateY(${(scrolled - startY) * speed}px)`;
-//   });
-// });  
-
-
-
-
-
-
-
+setupTimelineScroll();
